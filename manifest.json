@@ -1,0 +1,20 @@
+{
+  "name": "SanitizHAR",
+  "version": "1.0.0",
+  "description": "A simple chrome extension to sanitize HAR file contents",
+  "manifest_version": 3,
+  "author": "Shayon Mukherjee (shayonj@gmail.com)",
+  "homepage_url": "https://github.com/shayonj/sanitizhar",
+  "permissions": ["tabs", "activeTab"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "devtools_page": "devtools.html",
+  "action": {
+    "default_popup": "index.html",
+    "default_title": "SanitizHAR"
+  },
+  "icons": {
+    "128": "icon.png"
+  }
+}

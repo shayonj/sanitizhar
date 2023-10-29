@@ -1,0 +1,86 @@
+/* Reset some default styling */
+body,
+h1,
+p,
+button {
+  margin: 0;
+  padding: 0;
+  font-family: "Helvetica", "Arial", sans-serif;
+}
+body {
+  background-color: #040d12;
+  color: #a688fa;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  margin-bottom: 20px;
+}
+
+.container {
+  margin: 20px;
+  width: 100%;
+}
+
+h1 {
+  margin: 10px;
+  color: #ffffff;
+}
+
+h2 {
+  color: #ffffff;
+}
+
+a {
+  color: #ffffff;
+}
+
+.button {
+  padding: 10px 15px;
+  background-color: #333333;
+  width: 160px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.button:hover {
+  background-color: #555555;
+}
+
+.label-checkbox {
+  display: flex;
+  align-items: center;
+}
+
+.checkbox {
+  margin-right: 8px;
+}
+
+.buttons-container {
+  display: flex;
+  flex-direction: row; /* This makes them appear side by side */
+}
+
+.holder {
+  margin: 10px;
+}
+
+.margin-top {
+  margin-top: 10px; /* adjust value as needed */
+}
+
+.margin-left {
+  margin-left: 10px; /* adjust value as needed */
+}
+
+#headers-section,
+#cookies-section,
+#query-params-section {
+  display: grid;
+  gap: 1rem; /* You can adjust this for spacing between grid items */
+}

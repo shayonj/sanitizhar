@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>🔐 SanitizHAR</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="devtools.js"></script>
+  </head>
+
+  <body>
+    <div class="container">
+      <h1>🔐 SanitizHAR: Worry free sharing of HAR files</h1>
+      <div class="holder">
+        <div class="buttons-container">
+          <div class="button" id="downloadButton">
+            Download sanitized HAR 🚀
+          </div>
+        </div>
+        <div class="margin-top"></div>
+        <p style="font-size: 16px">
+          Check all the items that you'd like to sanitize:
+        </p>
+      </div>
+      <div id="har-details" class="holder">
+        <h2>Headers</h2>
+        <div class="data-section" id="headers-section"></div>
+        <div class="margin-top"></div>
+        <hr />
+        <div class="margin-top"></div>
+        <h2>Cookies</h2>
+        <div class="data-section" id="cookies-section"></div>
+        <div class="margin-top"></div>
+        <hr />
+        <div class="margin-top"></div>
+        <h2>Query String Parameters</h2>
+        <div class="data-section" id="query-params-section"></div>
+        <div class="margin-top"></div>
+        <hr />
+        <div class="margin-top"></div>
+        <div class="margin-top"></div>
+      </div>
+      <div class="holder">
+        Made with ❤️ by @shayonj. Report issues at
+        <a href="https://github.com/shayonj/sanitizhar" id="open-github">
+          https://github.com/shayonj/sanitizhar
+        </a>
+      </div>
+    </div>
+  </body>
+</html>
