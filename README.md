@@ -22,7 +22,3 @@ Because privacy matters! Whether it's a session cookie, an auth token, or just s
 ## 🌟 Contribute
 
 Think you can make SanitizHAR even more awesome? Pull requests are welcome! Dive into the code, tweak, improve, and send it our way.
-
----
-
-Enjoy and happy coding! 💻🎉
