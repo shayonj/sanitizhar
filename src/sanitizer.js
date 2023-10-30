@@ -1,5 +1,3 @@
-// sanitizer.js
-
 export function sanitizeHARData(result, checkedItems) {
   result.entries.forEach((entry) => {
     entry.request.headers = sanitizeData(entry.request.headers, checkedItems);
@@ -8,6 +6,19 @@ export function sanitizeHARData(result, checkedItems) {
       entry.request.queryString,
       checkedItems
     );
+
+    if (entry.response) {
+      entry.response.headers = sanitizeData(
+        entry.response.headers,
+        checkedItems
+      );
+      if (entry.response.cookies) {
+        entry.response.cookies = sanitizeData(
+          entry.response.cookies,
+          checkedItems
+        );
+      }
+    }
   });
   return { log: result };
 }

@@ -1,4 +1,3 @@
-/* Reset some default styling */
 body,
 h1,
 p,
@@ -63,7 +62,7 @@ a {
 
 .buttons-container {
   display: flex;
-  flex-direction: row; /* This makes them appear side by side */
+  flex-direction: row;
 }
 
 .holder {
@@ -71,16 +70,25 @@ a {
 }
 
 .margin-top {
-  margin-top: 10px; /* adjust value as needed */
+  margin-top: 10px;
 }
 
 .margin-left {
-  margin-left: 10px; /* adjust value as needed */
+  margin-left: 10px;
 }
 
-#headers-section,
-#cookies-section,
-#query-params-section {
+.checkboxes {
   display: grid;
-  gap: 1rem; /* You can adjust this for spacing between grid items */
+  gap: 1rem;
+}
+
+.checkboxes label {
+  display: inline-block;
+  padding-right: 10px;
+}
+.checkboxes input {
+  vertical-align: -2px;
+}
+.checkboxes label span {
+  vertical-align: -2px;
 }
