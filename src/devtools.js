@@ -4,22 +4,18 @@ chrome.devtools.panels.create(
   "🔐 SanitizHAR",
   "icon.png",
   "devtools.html",
-  function (panel) {
-    panel.onShown.addListener(function (window) {
+  (panel) => {
+    panel.onShown.addListener(() => {
       refreshPage(); // Refresh page to capture HAR when tab is visited
     });
   }
 );
 
-document.addEventListener("DOMContentLoaded", function (e) {
+document.addEventListener("DOMContentLoaded", () => {
   registerLinkHandlers();
   loadHARDetails(); // Initial load when panel is opened
 
-  chrome.runtime.onMessage.addListener(function (
-    message,
-    sender,
-    sendResponse
-  ) {
+  chrome.runtime.onMessage.addListener((message) => {
     if (
       message.type === "tabUpdated" &&
       message.tabId === chrome.devtools.inspectedWindow.tabId
@@ -39,11 +35,11 @@ document.addEventListener("DOMContentLoaded", function (e) {
 });
 
 function registerLinkHandlers() {
-  var links = document.getElementsByTagName("a");
+  const links = document.getElementsByTagName("a");
   for (var i = 0; i < links.length; i++) {
     (function () {
-      var ln = links[i];
-      var location = ln.href;
+      const ln = links[i];
+      const location = ln.href;
       ln.onclick = function (onclickEvent) {
         onclickEvent.preventDefault();
         chrome.tabs.create({ active: true, url: location });
@@ -54,14 +50,14 @@ function registerLinkHandlers() {
 
 function refreshPage() {
   const inspectedTabId = chrome.devtools.inspectedWindow.tabId;
-  chrome.tabs.reload(inspectedTabId, {}, function () {});
+  chrome.tabs.reload(inspectedTabId, {}, () => {});
 }
 
 function loadHARDetails() {
-  chrome.devtools.network.getHAR(function (result) {
-    let uniqueHeaders = new Set();
-    let uniqueCookies = new Set();
-    let uniqueQueryParams = new Set();
+  chrome.devtools.network.getHAR((result) => {
+    const uniqueHeaders = new Set();
+    const uniqueCookies = new Set();
+    const uniqueQueryParams = new Set();
 
     result.entries.forEach((entry) => {
       entry.request.headers.forEach((h) => uniqueHeaders.add(h.name));
@@ -104,23 +100,15 @@ function displayData(sectionId, data) {
 }
 
 function downloadSanitizedHAR() {
-  chrome.devtools.network.getHAR(function (result) {
+  chrome.devtools.network.getHAR((result) => {
     const checkedItems = Array.from(
       document.querySelectorAll('input[type="checkbox"]:checked')
     ).map((checkbox) => checkbox.value);
 
-    result.entries.forEach((entry) => {
-      entry.request.headers = sanitizeData(entry.request.headers, checkedItems);
-      entry.request.cookies = sanitizeData(entry.request.cookies, checkedItems);
-      entry.request.queryString = sanitizeData(
-        entry.request.queryString,
-        checkedItems
-      );
-    });
-    result = { log: result };
+    const sanitizedResult = sanitizeHARData(result, checkedItems);
 
-    const blob = new Blob([JSON.stringify(result)], {
-      type: "application/json",
+    const blob = new Blob([JSON.stringify(sanitizedResult)], {
+      type: "application/json"
     });
     const url = URL.createObjectURL(blob);
     const a = document.createElement("a");
@@ -129,13 +117,4 @@ function downloadSanitizedHAR() {
     a.click();
     URL.revokeObjectURL(url);
   });
-}
-
-function sanitizeData(data, checkedItems) {
-  data.forEach((item) => {
-    if (checkedItems.includes(item.name)) {
-      item.value = "[sanitized]";
-    }
-  });
-  return data;
 }
