@@ -1,3 +1,5 @@
+import { sanitizeHARData } from "./sanitizer";
+
 chrome.devtools.panels.create(
   "🔐 SanitizHAR",
   "icon.png",
