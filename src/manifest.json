@@ -5,7 +5,7 @@
   "manifest_version": 3,
   "author": "Shayon Mukherjee (shayonj@gmail.com)",
   "homepage_url": "https://github.com/shayonj/sanitizhar",
-  "permissions": ["tabs", "activeTab"],
+  "permissions": [],
   "background": {
     "service_worker": "background.js"
   },

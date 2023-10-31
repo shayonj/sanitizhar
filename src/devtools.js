@@ -13,7 +13,7 @@ chrome.devtools.panels.create(
 
 document.addEventListener("DOMContentLoaded", () => {
   registerLinkHandlers();
-  loadHARDetails(); // Initial load when panel is opened
+  // loadHARDetails(); // Initial load when panel is opened
 
   chrome.runtime.onMessage.addListener((message) => {
     if (
@@ -29,9 +29,7 @@ document.addEventListener("DOMContentLoaded", () => {
     loadHARDetails();
   });
 
-  document
-    .getElementById("downloadButton")
-    .addEventListener("click", downloadSanitizedHAR);
+  attachDownloadListener();
 });
 
 function registerLinkHandlers() {
@@ -77,6 +75,16 @@ function loadHARDetails() {
     displayData("cookies-section", Array.from(uniqueCookies));
     displayData("query-params-section", Array.from(uniqueQueryParams));
   });
+}
+
+function attachDownloadListener() {
+  const downloadButton = document.getElementById("downloadButton");
+
+  // Check if the button already has an event listener using a data attribute
+  if (!downloadButton.getAttribute("data-listener-attached")) {
+    downloadButton.addEventListener("click", downloadSanitizedHAR);
+    downloadButton.setAttribute("data-listener-attached", "true");
+  }
 }
 
 function displayData(sectionId, data) {
