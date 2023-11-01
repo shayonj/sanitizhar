@@ -2,7 +2,7 @@
 
 Ever found yourself needing to share a HAR (HTTP Archive) file for debugging but wary of the personal data it might contain? Worry no more! SanitizHAR is here to save your day (and your data).
 
-**NOTE**: Pending Chrome Web Store review. Coming out very soon 👀
+[Get it at the Chrome Web Store](https://chromewebstore.google.com/detail/sanitizhar/olljgcknknokkfcchffamflmcicapofi)
 
 ## What's This All About?
 
