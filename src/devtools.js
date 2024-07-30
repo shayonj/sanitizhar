@@ -62,6 +62,7 @@ function loadHARDetails() {
       entry.request.headers.forEach((h) => uniqueHeaders.add(h.name));
       entry.request.cookies.forEach((c) => uniqueCookies.add(c.name));
       entry.request.queryString.forEach((q) => uniqueQueryParams.add(q.name));
+
       if (entry.response) {
         entry.response.headers.forEach((h) => uniqueHeaders.add(h.name));
         if (entry.response.cookies) {
