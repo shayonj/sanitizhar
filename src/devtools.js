@@ -63,8 +63,6 @@ function loadHARDetails() {
       entry.request.cookies.forEach((c) => uniqueCookies.add(c.name));
       entry.request.queryString.forEach((q) => uniqueQueryParams.add(q.name));
       if (entry.response) {
-        displayDebug("RESPONSE", entry.response)
-        //entry.getContent((content)=> displayDebug("RESPONSE", content));
         entry.response.headers.forEach((h) => uniqueHeaders.add(h.name));
         if (entry.response.cookies) {
           entry.response.cookies.forEach((c) => uniqueCookies.add(c.name));
@@ -76,17 +74,6 @@ function loadHARDetails() {
     displayData("cookies-section", Array.from(uniqueCookies));
     displayData("query-params-section", Array.from(uniqueQueryParams));
   });
-}
-
-function displayDebug(header, data){
-    const div = document.createElement("div");
-    const label = document.createElement("div");
-    label.innerHTML = header;
-    const label2 = document.createElement("div");
-    label2.innerHTML = JSON.stringify(data);
-    div.appendChild(label);
-    div.appendChild(label2);
-    document.getElementById("debug").appendChild(div);
 }
 
 function attachDownloadListener() {
