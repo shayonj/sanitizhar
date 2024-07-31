@@ -158,16 +158,19 @@ function downloadSanitizedHAR() {
       document.querySelectorAll('input[type="checkbox"]:checked')
     ).map((checkbox) => checkbox.value);
 
-    const sanitizedResult = sanitizeHARData(result, checkedItems);
-
-    const blob = new Blob([JSON.stringify(sanitizedResult)], {
-      type: "application/json"
-    });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = "sanitized.har";
-    a.click();
-    URL.revokeObjectURL(url);
+    sanitizeHARData(result, checkedItems).then(
+      (sanitizedResult) => {
+        const blob = new Blob([JSON.stringify(sanitizedResult)], {
+          type: "application/json"
+        });
+        
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = "sanitized.har";
+        a.click();
+        URL.revokeObjectURL(url);
+      }
+    );
   });
 }
