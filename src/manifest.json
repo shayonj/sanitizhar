@@ -1,6 +1,6 @@
 {
   "name": "SanitizHAR",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "A simple chrome extension to sanitize HAR file contents",
   "manifest_version": 3,
   "author": "Shayon Mukherjee (shayonj@gmail.com)",
